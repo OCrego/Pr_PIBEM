@@ -21,13 +21,13 @@ Driver<dim>::Driver() :
   mpi_communicator (MPI_COMM_WORLD),
   computational_domain(mpi_communicator),
   bem_problem(computational_domain,mpi_communicator),
-  //boundary_conditions(computational_domain, bem_problem),
+  boundary_conditions(computational_domain, bem_problem),
   prm(),
   n_mpi_processes (Utilities::MPI::n_mpi_processes(mpi_communicator)),
   this_mpi_process (Utilities::MPI::this_mpi_process(mpi_communicator))
 {
   pcout.set_condition(this_mpi_process == 0);
-  boundary_conditions = BoundaryConditions(computational_domain, mpi_communicator)
+  //boundary_conditions = BoundaryConditions(computational_domain, bem_problem)
   //PathSearch search_prm("PARAMETER");
 
   // Declare the parameter entries..
